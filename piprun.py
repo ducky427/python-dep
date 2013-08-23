@@ -2,10 +2,13 @@
 import os.path
 import subprocess
 
-INSTALLED = """Flask
+INSTALLED = """argparse
+Cython
+Flask
 itsdangerous
 Jinja2
 MarkupSafe
+numpy
 pip
 python-dateutil
 pytz
@@ -16,6 +19,8 @@ setuptools
 simplejson
 six
 times
+virtualenv
+virtualenvwrapper
 Werkzeug
 wheel
 wsgiref""".split('\n')

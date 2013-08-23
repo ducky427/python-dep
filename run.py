@@ -1,4 +1,5 @@
 
+import marshal
 import random
 import time
 import xmlrpclib
@@ -15,6 +16,9 @@ if __name__ == '__main__':
     client = xmlrpclib.ServerProxy('http://pypi.python.org/pypi')
 
     packages = client.list_packages()
+    with open('data/all_packages.bin', 'wb') as f:
+        marshal.dump(packages, f)
+
     random.shuffle(packages)
 
     q = Queue(connection=Redis())

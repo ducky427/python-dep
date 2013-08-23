@@ -1,3 +1,5 @@
 pip
 rq
 rq-dashboard
+Cython
+numpy

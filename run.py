@@ -26,6 +26,7 @@ if __name__ == '__main__':
         jobs_statuses = [r.is_finished for r in results if r.is_finished]
         jobs_left = len(results) - len(jobs_statuses)
         done = (jobs_left == 0)
-        print "Number of jobs left: %s" % (jobs_left, )
-        time.sleep(10)
+        if not done:
+            print "Number of jobs left: %s" % (jobs_left, )
+            time.sleep(10)
 

@@ -25,7 +25,7 @@ if __name__ == '__main__':
         with open(filename, 'wb') as f:
             marshal.dump(packages, f)
 
-    packages = [p for p in packages if not os.path.exists('data/%.bin' % p)]
+    packages = [p for p in packages if not os.path.exists('data/%s.bin' % p)]
 
     random.shuffle(packages)
 

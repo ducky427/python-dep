@@ -1,4 +1,5 @@
 
+import os.path
 import marshal
 import random
 import time
@@ -15,9 +16,16 @@ ONE_MONTH = 60 * 60 * 24 * 30
 if __name__ == '__main__':
     client = xmlrpclib.ServerProxy('http://pypi.python.org/pypi')
 
-    packages = client.list_packages()
-    with open('data/all_packages.bin', 'wb') as f:
-        marshal.dump(packages, f)
+    filename = 'data/all_packages.bin'
+    if os.path.exists(filename):
+        with open(filename) as f:
+            packages = marshal.load(f)
+    else:
+        packages = client.list_packages()
+        with open(filename, 'wb') as f:
+            marshal.dump(packages, f)
+
+    packages = [p for p in packages if not os.path.exists('data/%.bin' % p)]
 
     random.shuffle(packages)
 

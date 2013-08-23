@@ -19,7 +19,7 @@ if __name__ == '__main__':
 
     q = Queue(connection=Redis())
 
-    results = [q.enqueue(process, args=[job], timeout=ONE_MONTH) for job in packages[:20] + ['pandas']]
+    results = [q.enqueue(process, args=[job], timeout=ONE_MONTH) for job in packages]
 
     done = False
     while not done:

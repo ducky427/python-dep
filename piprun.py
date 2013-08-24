@@ -2,6 +2,8 @@
 import os.path
 import subprocess
 
+import fileinfo
+
 INSTALLED = """argparse
 Cython
 Flask
@@ -27,13 +29,10 @@ wsgiref""".split('\n')
 
 
 def process(package_name):
-    filename = 'data/%s.bin' % package_name
-
-    if os.path.exists(filename):
+    if fileinfo.exists(package_name):
         return
 
-    if package_name not in INSTALLED:
-        subprocess.call(['pip', 'install', '--no-deps', package_name])
+    subprocess.call(['pip', 'install', '--no-deps', package_name])
 
     subprocess.call(['python', 'saveinfo.py', package_name])
 

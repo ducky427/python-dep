@@ -1,13 +1,15 @@
 
-import os.path
 import marshal
-import sys
 import pkg_resources
+import sys
+
+import fileinfo
 
 DATA_DIR = 'data/'
 
 def save_data(name, package_info):
-    with open(os.path.join(DATA_DIR, '%s.bin' % name), 'wb') as f:
+    file_name = fileinfo.get_file_name(name)
+    with open(file_name, 'wb') as f:
         marshal.dump(package_info, f)
 
 def search_packages_info(query):

@@ -8,6 +8,8 @@ import xmlrpclib
 from redis import Redis
 from rq import Queue
 
+import fileinfo
+
 from piprun import process
 
 ONE_MONTH = 60 * 60 * 24 * 30
@@ -25,7 +27,7 @@ if __name__ == '__main__':
         with open(filename, 'wb') as f:
             marshal.dump(packages, f)
 
-    packages = [p for p in packages if not os.path.exists('data/%s.bin' % p)]
+    packages = [p for p in packages if not fileinfo.exists(p)]
 
     random.shuffle(packages)
 

@@ -5,6 +5,7 @@ import subprocess
 import fileinfo
 
 INSTALLED = """argparse
+distribute
 Cython
 Flask
 itsdangerous

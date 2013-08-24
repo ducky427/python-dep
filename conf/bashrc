@@ -1,0 +1,3 @@
+
+source /usr/local/bin/virtualenvwrapper.sh
+source /usr/share/doc/tmux/examples/bash_completion_tmux.sh

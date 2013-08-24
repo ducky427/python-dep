@@ -9,6 +9,7 @@ from cStringIO import StringIO
 
 import requests
 
+import fileinfo
 
 def _extract_deps(content):
     """ Extract dependencies using install_requires directive """
@@ -83,4 +84,4 @@ def get_package_data(name):
         'metadata' : metadata,
     }
 
-    return package
+    fileinfo.save_data(name, package)

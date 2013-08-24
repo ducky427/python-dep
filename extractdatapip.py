@@ -1,16 +1,10 @@
 
-import marshal
 import pkg_resources
 import sys
 
 import fileinfo
 
 DATA_DIR = 'data/'
-
-def save_data(name, package_info):
-    file_name = fileinfo.get_file_name(name)
-    with open(file_name, 'wb') as f:
-        marshal.dump(package_info, f)
 
 def search_packages_info(query):
 
@@ -43,7 +37,7 @@ def search_packages_info(query):
                 'requires': [(dep.project_name, dep.specs) for dep in dist.requires()],
                 'metadata' : metadata,
             }
-            save_data(name, package)
+            fileinfo.save_data(name, package)
 
 if __name__ == '__main__':
     data = search_packages_info(sys.argv[1:])

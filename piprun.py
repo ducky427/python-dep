@@ -1,5 +1,4 @@
 
-import os.path
 import subprocess
 
 import fileinfo
@@ -16,6 +15,7 @@ pip
 python-dateutil
 pytz
 redis
+requests
 rq
 rq-dashboard
 setuptools
@@ -35,7 +35,7 @@ def process(package_name):
 
     subprocess.call(['pip', 'install', '--no-deps', package_name])
 
-    subprocess.call(['python', 'saveinfo.py', package_name])
+    subprocess.call(['python', 'extractdatapip.py', package_name])
 
     if package_name not in INSTALLED:
         subprocess.call(['pip', 'uninstall', '-y', package_name])

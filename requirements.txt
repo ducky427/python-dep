@@ -3,3 +3,4 @@ rq
 rq-dashboard
 Cython
 numpy
+requests

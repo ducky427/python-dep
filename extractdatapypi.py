@@ -82,6 +82,8 @@ def get_package_data(name):
         'version': release,
         'requires': deps,
         'metadata' : metadata,
+        'url': url,
+        'size': len(req.content)
     }
 
-    fileinfo.save_data(name, package)
+    fileinfo.save_data(name, package, fileinfo.PYPI_DATA_DIR)

@@ -1,6 +1,8 @@
 #!/bin/sh
 
 apt-get install build-essential \
+                tmux \
+                htop \
                 python-dev \
                 libxml2-dev \
                 libxslt-dev \

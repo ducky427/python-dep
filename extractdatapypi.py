@@ -37,14 +37,7 @@ def _extract_setup_content(package_file, name):
         return ''
 
 
-def get_package_data(name):
-    client = xmlrpclib.ServerProxy('http://pypi.python.org/pypi')
-    releases = client.package_releases(name)
-    if not releases:
-        return
-
-    release = releases[0]
-
+def get_metadata(client, name, release):
     doc = [d for d in client.release_urls(name, release) if 'url' in d and '.tar' in d['filename']]
     if not doc:
         return
@@ -77,13 +70,29 @@ def get_package_data(name):
     except:
         metadata = None
 
-    package = {
-        'name': name,
-        'version': release,
+    return {
         'requires': deps,
         'metadata' : metadata,
         'url': url,
         'size': len(req.content)
     }
+
+def get_package_data(name):
+    client = xmlrpclib.ServerProxy('http://pypi.python.org/pypi')
+    releases = client.package_releases(name)
+    if not releases:
+        return
+
+    release = releases[0]
+
+    package = {
+        'name': name,
+        'version': release,
+    }
+
+    more_package_data = get_metadata(client, name, release)
+
+    if more_package_data:
+        package.update(more_package_data)
 
     fileinfo.save_data(name, package, fileinfo.PYPI_DATA_DIR)

@@ -2,7 +2,6 @@
 import os.path
 import marshal
 import random
-import time
 import xmlrpclib
 
 from redis import Redis
@@ -35,12 +34,4 @@ if __name__ == '__main__':
 
     results = [q.enqueue(get_package_data, args=[job], timeout=ONE_MONTH) for job in packages]
 
-    done = False
-    while not done:
-        jobs_statuses = [1 for r in results if r.is_finished]
-        jobs_left = len(results) - len(jobs_statuses)
-        done = (jobs_left == 0)
-        if not done:
-            print "Number of jobs left: %s" % (jobs_left, )
-            time.sleep(30)
-
+    print "%s tasks queued" % (len(results), )

@@ -19,6 +19,7 @@ def _extract_deps(content):
         deps = [a.replace("'", "").strip()
                 for a in results[0].strip().split(",")
                 if a.replace("'", "").strip() != ""]
+        deps = [a.replace('"', '') for a in deps]
     return deps
 
 

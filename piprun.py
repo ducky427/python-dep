@@ -11,7 +11,9 @@ def process(package_name):
     package_name = 'numpy'
     env_name = '%senv' % (package_name, )
     cmds = ['virtualenv envs/%s' % env_name,
-        'source envs/%s/bin/activate' % env_name,
+        '. envs/%s/bin/activate' % env_name,
+        'pip install numpy',
+        'pip install Cython',
         'pip install --no-deps %s' % package_name,
         'python extractdatapip.py %s' % package_name,
         'deactivate',

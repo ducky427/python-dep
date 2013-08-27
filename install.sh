@@ -1,5 +1,7 @@
 #!/bin/sh
 
+mkdir -p /root/.pip/wheels
+
 apt-get install build-essential \
                 tmux \
                 htop \

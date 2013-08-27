@@ -4,3 +4,4 @@ rq-dashboard
 Cython
 numpy
 requests
+networkx

@@ -8,7 +8,6 @@ def process(package_name):
     if fileinfo.exists(package_name):
         return
 
-    package_name = 'numpy'
     env_name = '%senv' % (package_name, )
     cmds = ['virtualenv envs/%s' % env_name,
         '. envs/%s/bin/activate' % env_name,

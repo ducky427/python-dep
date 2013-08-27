@@ -16,12 +16,11 @@ def process(package_name):
         'pip install Cython',
         'pip install --no-deps %s' % package_name,
         'python extractdatapip.py %s' % package_name,
-        'deactivate',
-        'rm -r envs/%s' % (env_name, )
-        ]
+        'deactivate']
     cmd = ' && '.join(cmds)
     subprocess.call(cmd, shell=True)
 
+    subprocess.call('rm -r envs/%s' % (env_name, ), shell=True)
 
 if __name__ == '__main__':
     process('pandas')

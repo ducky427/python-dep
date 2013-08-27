@@ -12,6 +12,7 @@ def process(package_name):
     env_name = '%senv' % (package_name, )
     cmds = ['virtualenv envs/%s' % env_name,
         '. envs/%s/bin/activate' % env_name,
+        'pip install wheel',
         'pip install numpy',
         'pip install Cython',
         'pip install --no-deps %s' % package_name,

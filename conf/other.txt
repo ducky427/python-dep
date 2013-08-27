@@ -2,9 +2,9 @@
 Setuptools
 ===========
 
-wget https://pypi.python.org/packages/source/s/setuptools/setuptools-1.0.tar.gz
-tar xf setuptools-1.0.tar.gz
-cd setuptools-1.0
+wget https://pypi.python.org/packages/source/s/setuptools/setuptools-1.1.tar.gz
+tar xf setuptools-1.1.tar.gz
+cd setuptools-1.1
 python setup.py install
 
 Redis

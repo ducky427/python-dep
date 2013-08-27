@@ -39,3 +39,4 @@ nosetests.xml
 *.gml
 
 data/*.bin
+data2/*.bin
